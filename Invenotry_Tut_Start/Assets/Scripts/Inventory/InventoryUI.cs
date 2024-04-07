@@ -1,3 +1,4 @@
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
@@ -8,6 +9,9 @@ public class InventoryUI : MonoBehaviour
 
     InventorySlot[] slots;
 
+    //Refrerncia al ui entero
+    public GameObject inventoryUI;
+
     void Start()
     {
         inventory = Inventory.instance;
@@ -15,10 +19,17 @@ public class InventoryUI : MonoBehaviour
 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
     }
+    private void Update()
+    {
+        if(Input.GetButtonDown("Inventory"))
+        {
+            inventoryUI.SetActive(!inventoryUI.activeSelf);
+        }
+    }
     void UpdateUI()
     {
         Debug.Log("updating ui");
-        for(int i=0 ; i<slots.Length; i++)
+        for(int i = 0 ; i<slots.Length; i++)
         {
             if(i<inventory.items.Count)
             {
@@ -29,12 +40,9 @@ public class InventoryUI : MonoBehaviour
                 slots[i].ClearSlot();
             }
         }
+        Debug.Log(inventory.items.Count);
     }
 }
-
-
-
-
 
 
 

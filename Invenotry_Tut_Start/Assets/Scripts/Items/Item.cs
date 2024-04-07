@@ -35,7 +35,7 @@ public class Item : ScriptableObject
     public bool isDefaultItem = false;
 
     //if you use the item
-    public virtual void Use()
+    public virtual void Use() //virtual para que cada item tenga su uso 
     {
         Debug.Log("Using " + name);
     }

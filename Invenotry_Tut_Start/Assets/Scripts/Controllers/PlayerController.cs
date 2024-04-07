@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (EventSystem.current.IsPointerOverGameObject())
+		if (EventSystem.current.IsPointerOverGameObject()) //if its hovering ui cannot move
 			return;
 
 		// If we press left mouse

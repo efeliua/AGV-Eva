@@ -13,13 +13,28 @@ public class InventorySlot : MonoBehaviour
         icon.sprite = item.icon;
         icon.enabled = true;
         removeButton.interactable = true;
+        Debug.Log("add"+item.name);
     }
     public void ClearSlot()
     {
         item = null;
         icon.sprite = null;
-        icon.enabled = true;
+        icon.enabled = false;
         removeButton.interactable = false;
+    }
+    public void OnRemoveButton()
+    {
+        Debug.Log("me fui");
+        Inventory.instance.Remove(item);
+    }
+    public void UseUtem()
+    {
+        Debug.Log("usame");
+        if(item!=null)
+        {
+            Debug.Log("itemnonulo");
+            item.Use();
+        }
     }
 }
 
